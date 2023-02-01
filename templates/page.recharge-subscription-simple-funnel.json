@@ -1,0 +1,33 @@
+{
+  "sections": {
+    "main": {
+      "type": "recharge-subscription-simple-funnel",
+      "blocks": {
+        "6f07eff5-d8b9-4597-94a4-b0e06f0e6529": {
+          "type": "step-1",
+          "settings": {
+            "heading": "Choose product",
+            "product1": "bravo-black-blue-fixie",
+            "product2": "the-charlie",
+            "product3": "the-coolidge-crmo-fixed-gear"
+          }
+        },
+        "f7cc84c0-09dc-4fe1-9088-45d7e692e22b": {
+          "type": "step-2",
+          "settings": {
+            "heading": ""
+          }
+        }
+      },
+      "block_order": [
+        "6f07eff5-d8b9-4597-94a4-b0e06f0e6529",
+        "f7cc84c0-09dc-4fe1-9088-45d7e692e22b"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
