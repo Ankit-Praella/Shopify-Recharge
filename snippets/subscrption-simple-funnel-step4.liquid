@@ -1,0 +1,38 @@
+{% comment %} Choose a plan started {% endcomment %}
+<select-addons>
+  <div data-selector="4" class="d-none col-lg-9 p-5 p-lg-8   fourth-step">  
+      <div class="row">
+          {% assign collection = block.settings.addon %}
+          <div class="col-lg-9 p-5 p-lg-8 shadow choose-plan-products">
+              <div class="row pt-lg-6">
+                  {% for product in collection.products %}
+                    {% if product.available %}
+                      <div class="col-lg-3">
+                          {% render 'addon-products', product: product %}
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+              </div>
+              
+          </div>
+          <div class="col-lg-3 shadow position-relative sidebar-product-wrapper">
+            <div class="summary-header">
+                <div class="">
+                <p data-summary_price></p>
+                </div>
+                </div>
+                <div class="summary-body">
+                <div class="sidebar-products-wrapper" data-selectedProducts>
+                </div>
+                <div class="bg-gray-100 p-2 d-none" data-planselectionMsg>
+                    {{ 'subscription_funnel_box.select' | t }} <span data-selectedProductCount></span> {{ 'subscription_funnel_box.more_products' | t }}
+                </div>
+                </div>
+        </div>
+      </div>
+      <div class="text-end">
+        <button href="#" class="btn btn-primary mt-4" data_addon data-next_selector="5">{{ 'subscription_funnel_box.next' | t }}</button>
+      </div>
+  </div>
+</select-addons>
+{% comment %} Choose a plan end {% endcomment %}

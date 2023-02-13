@@ -1,0 +1,61 @@
+{
+  "sections": {
+    "main": {
+      "type": "recharge-subscription-simple-funnel",
+      "blocks": {
+        "6f07eff5-d8b9-4597-94a4-b0e06f0e6529": {
+          "type": "step-1",
+          "settings": {
+            "heading": "Choose Product",
+            "product1": "bay-rum",
+            "product2": "cedar-citrus",
+            "product3": "cool-brew"
+          }
+        },
+        "f7cc84c0-09dc-4fe1-9088-45d7e692e22b": {
+          "type": "step-2",
+          "settings": {
+            "heading": "Quantity",
+            "number1": "1",
+            "number2": "2",
+            "number3": "3"
+          }
+        },
+        "eda68c3e-d8d1-4885-8947-de8c40169ec1": {
+          "type": "step-3",
+          "settings": {
+            "frequency1": "choose frequency",
+            "frequency2": "1 Days",
+            "frequency3": "6 days",
+            "frequency4": "12 days"
+          }
+        },
+        "5dea805a-7078-48ce-a4c5-48ea4072623b": {
+          "type": "step-4",
+          "settings": {
+            "addon": "addons"
+          }
+        },
+        "26cec59c-9057-44cb-8e67-fff4452ab767": {
+          "type": "step-5",
+          "settings": {
+            "heading": "Summary",
+            "subheading": ""
+          }
+        }
+      },
+      "block_order": [
+        "6f07eff5-d8b9-4597-94a4-b0e06f0e6529",
+        "f7cc84c0-09dc-4fe1-9088-45d7e692e22b",
+        "eda68c3e-d8d1-4885-8947-de8c40169ec1",
+        "5dea805a-7078-48ce-a4c5-48ea4072623b",
+        "26cec59c-9057-44cb-8e67-fff4452ab767"
+      ],
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

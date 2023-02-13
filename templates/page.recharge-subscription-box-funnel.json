@@ -1,0 +1,62 @@
+{
+  "sections": {
+    "main": {
+      "type": "recharge-subscription-box-funnel",
+      "blocks": {
+        "652e3149-3b95-46e1-87f4-1f58ede743a4": {
+          "type": "step-1",
+          "settings": {
+            "heading": "",
+            "product1": "6-meals",
+            "product2": "9-meals",
+            "product3": "12-meals"
+          }
+        },
+        "ed8214b8-5d43-46bd-9a40-42d01c3abaef": {
+          "type": "step-2",
+          "settings": {
+            "heading": "",
+            "subheading": "",
+            "sub_collection": "bundle"
+          }
+        },
+        "b8623959-358c-4796-ad82-9bc850e71f3b": {
+          "type": "step-3",
+          "settings": {
+            "heading": "",
+            "subheading": "",
+            "sub_collection": "addons"
+          }
+        },
+        "77d4c6bf-3954-48fd-8f8c-09ae7d4f3734": {
+          "type": "step-4",
+          "settings": {
+            "heading": "",
+            "subheading": ""
+          }
+        },
+        "19de12f5-25f6-4100-a806-988116efd104": {
+          "type": "step-3",
+          "settings": {
+            "heading": "",
+            "subheading": "",
+            "sub_collection": "addons"
+          }
+        }
+      },
+      "block_order": [
+        "652e3149-3b95-46e1-87f4-1f58ede743a4",
+        "ed8214b8-5d43-46bd-9a40-42d01c3abaef",
+        "b8623959-358c-4796-ad82-9bc850e71f3b",
+        "77d4c6bf-3954-48fd-8f8c-09ae7d4f3734",
+        "19de12f5-25f6-4100-a806-988116efd104"
+      ],
+      "settings": {
+        "fluid_layout": false
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,58 @@
+<div data-selector="5"  class="container d-none">
+  <div class="row" data-Summary>
+    <div class="col-xl-10 bg-white pt-lg-7 pe-lg-7 mx-auto">
+      {% if block.settings.heading !=blank %}
+        <h2 class="text-center pb-4">{{ block.settings.heading }}</h2>
+      {% endif %}  
+      <div addon_detail class="row no-gutter product-wrapper addon-details  pb-lg-5">
+        <div class="col-lg-8">
+          <div class="row">
+            <div class="col-lg-6 mt-lg-0 mt-4">
+              <div class="product-img-wrapper mx-auto pro_image">
+                
+              </div>
+            </div>
+            <div class="col-lg-6 ps-lg-0 px-4 pt-lg-0 pt-5">
+              <div class="product-description d-flex align-items-start justify-content-between border-bottom border-gray-200">
+                <div>
+                  <h6 class="ls-1 lh-sm text-uppercase mb-0">Quantity:</h6>
+                  <ul class="list-unstyled mb-0 list-items d-flex align-items-center flex-wrap text-capitalize " data-selectedQty=""></ul>
+                </div>
+                <a href="javascript:void(0);" class="btn btn-link" data_nav_step="2">edit</a>
+              </div>
+              <div class="product-description d-flex align-items-start justify-content-between border-bottom border-gray-200">
+                <div>
+                  <h6 class="ls-1 lh-sm text-uppercase mb-0">Frequency:</h6>
+                  <ul class="list-unstyled mb-0 list-items d-flex align-items-center flex-wrap text-capitalize " data-selectedFreq=""></ul>
+                </div>
+                <a href="javascript:void(0);" class="btn btn-link" data_nav_step="3">edit</a>
+              </div>
+              <div class="product-description d-flex align-items-start justify-content-between border-bottom border-gray-200">
+                <div>
+                  <h6 class="ls-1 lh-sm text-uppercase mb-0">Add-On:</h6>
+                  <ul class="list-unstyled mb-0 list-items d-flex align-items-center flex-wrap text-capitalize " data-selectedAddon=""></ul>
+                </div>
+                <a href="javascript:void(0);" class="btn btn-link" data_nav_step="4">edit</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="product-description d-flex align-items-start justify-content-between border-bottom border-gray-200">
+            <p class="">
+              Total
+            </p>
+            <p data-selectedPrice>
+            </p>
+          </div>
+          <div class="text-end pt-3 pt-lg-4">
+            <a proId="" href="#" class="btn btn-primary add_cart" data_add_to_cart id="proId" data-add_to_cart="">
+              <span class="spinner"></span>
+              ADD TO CART
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

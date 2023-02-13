@@ -1,0 +1,18 @@
+<frequency-select>
+  <div data-selector="3"  class="d-none third-step"  data-step-name="select-frequency">
+    <h2 class="text-center pb-4">
+      {{ block.settings.heading }}
+   </h2>
+    <div data-next_selector="4" class="row justify-content-center">
+      {% for i in (i..2) %}
+        {% assign frequency = 'frequency' | append: i %}
+        {% assign frequencyno = block.settings[frequency]%}
+        <div class="col-12 mb-3 mb-lg-0 col-lg-4 frequency-container"  data-qty-frequency="{{i}}">
+          <p frequency_number frequency-number="{{frequencyno}}" data-productid   class="border fw-bold p-5 text-center text-uppercase h-100 frequency-wrapper"></p>
+        </div>  
+      {% endfor %}    
+    </div>    
+  </div>
+</frequency-select>
+
+
