@@ -1,4 +1,4 @@
-/* blank array define */
+/** blank array define */
 var allProductsData = [];
 var Amount = [];
 var frequencyNo = null;
@@ -198,16 +198,16 @@ class chooseProduct extends HTMLElement {
       finalQty = currentqty - 1;
       $qtyInputBox.value = finalQty;
       var bxId2 = document.querySelectorAll('[data-qty-input-box]');
-      var totalCount = 0;
-      bxId2.forEach(bxdata => {
-        totalCount += +bxdata.value;
-        if (totalCount < 5) {
-          var $input = document.querySelectorAll(`[data-for="increase"]`);
-          $input.forEach(el => {
-            el.style.pointerEvents = 'auto';
-          })
-        }
-      })
+        var totalCount = 0;
+        bxId2.forEach(bxdata => {
+          totalCount += +bxdata.value;
+          if (totalCount < 5) {
+            var $input = document.querySelectorAll(`[data-for="increase"]`);
+            $input.forEach(el => {
+              el.classList.remove('disabled')
+            })
+          }
+        })
     } else {
       finalQty = currentqty + 1;
       $qtyInputBox.value = finalQty;
@@ -225,21 +225,19 @@ class chooseProduct extends HTMLElement {
           this.displaySidebarSummary();
         }
       })
-
       var bxId2 = document.querySelectorAll('[data-qty-input-box]');
       var totalCount = 0;
       bxId2.forEach(bxdata => {
         totalCount += +bxdata.value;
         if (totalCount == 5) {
-          var $input = document.querySelectorAll(`[data-for="increase"]`);
-          $input.forEach(el => {
-            el.style.pointerEvents = 'none';
+          var $inputEvent = document.querySelectorAll(`[data-for="increase"]`);
+          $inputEvent.forEach(el => {
+            el.classList.add('disabled')
           })
           this.snotify('error', `You can add only 5 product`);
         }
       })
     }
-
   }
   /**
     * sideBar summary display dynamic HTMl
@@ -255,8 +253,8 @@ class chooseProduct extends HTMLElement {
 						<label for="Quantity" class="d-none" title="">${pro.quantity}</label>
 						<div class="input-group input-group-sm">
 							<div class="input-group-prepend">
-								<a href="#" class="input-group-text" rel="nofollow" aria-label="quantity-minus" title="quantity-minus" data-for="decrease" data-qty-btn>
-									<span class="btn-decrease"><span class="icon-minus"></span></span>
+								<a href="#"  class="input-group-text" rel="nofollow" aria-label="quantity-minus" title="quantity-minus" data-for="decrease" data-qty-btn>
+									<span class="btn-decrease"><span data-productid="${pro.id}" data-for="decrease" class="icon-minus"></span></span>
 									<span class="visually-hidden">quantity-minus</span>
 								</a>
 							</div>
@@ -264,8 +262,8 @@ class chooseProduct extends HTMLElement {
 									value="${pro.quantity}" step="1" min="0"
 									inputmode="numeric" data-qty-input class="quantity form-control text-center border-0 ps-lg-3 p-0 ms-0"  readonly>
 							<div class="input-group-append m-0">
-								<a href="#" class="input-group-text" rel="nofollow" aria-label="quantity-plus" title="quantity-plus" data-for="increase" data-qty-btn>
-									<span class="btn-increase"><span class="icon-plus"></span></span>
+								<a href="#"  class="input-group-text" rel="nofollow" aria-label="quantity-plus" title="quantity-plus" data-for="increase" data-qty-btn>
+									<span class="btn-increase"><span data-productid="${pro.id}" data-for="increase" class="icon-plus"></span></span>
 									<span class="visually-hidden">quantity-plus</span>
 								</a>
 							</div>
@@ -273,7 +271,7 @@ class chooseProduct extends HTMLElement {
 					</div>
 					<h6> ${pro.title} </h6>
 					<div class="pro_image">
-					<img src="${pro.src}" class="w-100" alt="" loading="lazy" width="20" height="20"/>
+					<img src="${pro.src}" class="w-100" alt="" loading="lazy" width="50" height="50"/>
 					</div>
 					<div>
 							<a href="#" data-productid="${pro.id}" addon-remove-item data-qty="${pro.quantity}">
@@ -285,7 +283,6 @@ class chooseProduct extends HTMLElement {
       }
     })
   }
-
   /* 
   * Remove addon item
   */
@@ -298,18 +295,71 @@ class chooseProduct extends HTMLElement {
         ele.querySelector('input').value = 0;
       });
       event.target.closest('[data-qty-container-addon]').remove();
+      var bxId2 = document.querySelectorAll('[input-qty-box]');
+      var totalCount = 0;
+      bxId2.forEach(bxdata => {
+        totalCount += +bxdata.value;
+        if (totalCount < 5) {
+          var $input = document.querySelectorAll(`[data-for="increase"]`);
+          $input.forEach(el => {
+            el.classList.remove('disabled')
+          })
+        }
+      })
     }
-    if (currentTarget.classList.contains("icon-plus")) {
-      let targetData = event.target.closest('.quantity-wrapper'); 
-      let $qtyInputBox = targetData.querySelector('[data-qty-input]');
-      var currentqty = parseInt($qtyInputBox.value) || 0;
-      let action = currentTarget.dataset.for || 'increase';
-      console.log(action);
+    let targetData = event.target.closest('.quantity-wrapper');
+    let $qtyInputBox = targetData.querySelector('[data-qty-input]');
+    let action = currentTarget.dataset.for || 'decrease';
+    var currentQty = parseInt($qtyInputBox.value) || 0;
+    let finalQty = 1;
+    if (currentTarget.querySelector('.disabled') == null) {
+      if (action == 'decrease' && currentQty <= 0) {
+        return false
+      } else if (action == 'decrease') {
+        finalQty = currentQty - 1;
+        $qtyInputBox.value = finalQty;
+        if ($qtyInputBox.value == 0) {
+          event.target.closest('[data-qty-container-addon]').remove();
+        }
+        let product_id = currentTarget.closest('[data-productid').getAttribute('data-productid');
+        document.querySelectorAll(`[data-qty-container="${product_id}"]`).forEach(ele => {
+          ele.querySelector('input').value = finalQty;
+        });
+        var bxId2 = document.querySelectorAll('[input-qty-box]');
+        var totalCount = 0;
+        bxId2.forEach(bxdata => {
+          totalCount += +bxdata.value;
+          if (totalCount < 5) {
+            var $input = document.querySelectorAll(`[data-for="increase"]`);
+            $input.forEach(el => {
+              el.classList.remove('disabled')
+            })
+          }
+        })
+        
+      } else {
+        finalQty = currentQty + 1;
+        $qtyInputBox.value = finalQty;
+        let product_id = currentTarget.closest('[data-productid').getAttribute('data-productid');
+        document.querySelectorAll(`[data-qty-container="${product_id}"]`).forEach(ele => {
+          ele.querySelector('input').value = finalQty;
+        });
+        var bxId2 = document.querySelectorAll('[input-qty-box]');
+        var totalCount = 0;
+        bxId2.forEach(bxdata => {
+          totalCount += +bxdata.value;
+          if (totalCount == 5) {
+            var $inputEvent = document.querySelectorAll(`[data-for="increase"]`);
+            $inputEvent.forEach(el => {
+              el.classList.add('disabled')
+            })
+            this.snotify('error', `You can add only 5 product`);
+          }
+        })
+      }
     }
+
   }
-  /* 
-  * Update addon item
-  */
   /*
    Notifications
  */
@@ -399,5 +449,3 @@ class chooseProduct extends HTMLElement {
   }
 }
 customElements.define("choose-product", chooseProduct)
-
-
